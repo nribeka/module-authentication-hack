@@ -27,7 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
  * 
  * @see org.openmrs.api.context.Context
  */
-@Transactional
 public interface AuthenticationService extends OpenmrsService {
 
     /**
@@ -53,6 +52,7 @@ public interface AuthenticationService extends OpenmrsService {
      * @param token the token information
      * @return the correct token information
      * @throws APIException if the token is invalid
+     * @should authenticate user using their authorization token information
      */
     String authenticate(final String username, final String token) throws Exception;
 
@@ -63,9 +63,9 @@ public interface AuthenticationService extends OpenmrsService {
      *
      * @param username
      * @param password
-     * @param otherusername
+     * @param otherUsername
      * @param duration
      * @return
      */
-    String authenticateUser(final String username, final String password, final String otherusername, final Long duration);
+    String authenticateUser(final String username, final String password, final String otherUsername, final Long duration);
 }

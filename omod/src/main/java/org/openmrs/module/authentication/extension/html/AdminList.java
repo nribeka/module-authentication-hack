@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.authentication.extension.html;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -43,9 +44,7 @@ public class AdminList extends AdministrationSectionExt {
 	 * @see AdministrationSectionExt#getLinks()
 	 */
 	public Map<String, String> getLinks() {
-		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
-		map.put("/module/authentication/manage.form", "authentication.manage");
-		return map;
+		return Collections.emptyMap();
 	}
 	
 }

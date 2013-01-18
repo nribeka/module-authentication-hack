@@ -15,7 +15,6 @@ package org.openmrs.module.authentication.api.impl;
 
 import java.util.UUID;
 
-import org.apache.commons.lang.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
@@ -105,12 +104,12 @@ public class AuthenticationServiceImpl extends BaseOpenmrsService implements Aut
      *
      * @param username
      * @param password
-     * @param otherusername
+     * @param otherUsername
      * @param duration
      * @return
      */
     @Override
-    public String authenticateUser(final String username, final String password, final String otherusername, final Long duration) {
+    public String authenticateUser(final String username, final String password, final String otherUsername, final Long duration) {
         return null;
     }
 }

@@ -10,8 +10,8 @@
             <generator class="native"/>
         </id>
         <discriminator column="id" insert="false"/>
-        <property name="token" type="java.lang.String" column="token" length="38" unique="true"/>
-        <property name="username" type="java.lang.String" column="username" length="38" unique="true"/>
+        <property name="token" type="java.lang.String" column="token" length="128" unique="true"/>
+        <property name="username" type="java.lang.String" column="username" length="128" unique="true"/>
         <property name="duration" type="java.lang.Long" column="duration"/>
         <property name="expirationDate" type="java.util.Date" column="expirationDate"/>
         <property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true"/>

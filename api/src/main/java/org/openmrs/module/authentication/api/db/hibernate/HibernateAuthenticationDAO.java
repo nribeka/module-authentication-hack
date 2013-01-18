@@ -24,6 +24,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.module.authentication.Authentication;
 import org.openmrs.module.authentication.api.db.AuthenticationDAO;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * It is a default implementation of  {@link AuthenticationDAO}.
@@ -49,6 +50,7 @@ public class HibernateAuthenticationDAO implements AuthenticationDAO {
     }
 
     @Override
+    @Transactional
     public Authentication saveAuthentication(final Authentication authentication) {
         sessionFactory.getCurrentSession().save(authentication);
         return authentication;
@@ -81,6 +83,7 @@ public class HibernateAuthenticationDAO implements AuthenticationDAO {
     }
 
     @Override
+    @Transactional
     public void purgeAuthentications() {
         String queryString = "delete from Authentication where expirationDate <= :currentDate";
         Query query = sessionFactory.getCurrentSession().createQuery(queryString);

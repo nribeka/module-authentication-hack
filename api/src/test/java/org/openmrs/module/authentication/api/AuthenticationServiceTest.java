@@ -17,9 +17,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openmrs.api.APIException;
 import org.openmrs.api.context.Context;
+import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
 
-public class AuthenticationServiceTest extends BaseModuleWebContextSensitiveTest {
+public class AuthenticationServiceTest extends BaseModuleContextSensitiveTest {
 
     /**
      * @verifies authenticate valid user and return authorization token
@@ -39,6 +40,21 @@ public class AuthenticationServiceTest extends BaseModuleWebContextSensitiveTest
     @Test(expected = APIException.class)
     public void authenticate_shouldThrowExceptionIfTheUserDoesNotHaveValidAccount() throws Exception {
         AuthenticationService service = Context.getService(AuthenticationService.class);
-        service.authenticate("admin", "testarius", 1000L);
+        String token = service.authenticate("admin", "testarius", 1000L);
+        Assert.assertNull(token);
+    }
+
+    /**
+     * @verifies authenticate user using their authorization token information
+     * @see AuthenticationService#authenticate(String, String)
+     */
+    @Test
+    public void authenticate_shouldAuthenticateUserUsingTheirAuthorizationTokenInformation() throws Exception {
+        AuthenticationService service = Context.getService(AuthenticationService.class);
+        String firstToken = service.authenticate("admin", "test", 1000L);
+        Assert.assertNotNull(firstToken);
+
+        String secondToken = service.authenticate("admin", firstToken);
+        Assert.assertNotNull(secondToken);
     }
 }
