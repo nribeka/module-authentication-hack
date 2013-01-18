@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet id="module-authentication-20130116-1650" author="nribeka">
+        <createTable tableName="authentication_authentication">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="token" type="varchar(64)"/>
+            <column name="username" type="varchar(64)" />
+            <column name="duration" type="long" />
+            <column name="expirationDate" type="timestamp" />
+            <column name="uuid" type="char(38)" />
+        </createTable>
+    </changeSet>
+    
+</databaseChangeLog>
